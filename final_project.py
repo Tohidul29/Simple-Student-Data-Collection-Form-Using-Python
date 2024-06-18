@@ -198,7 +198,7 @@ def action():
     
 
     #messagebox:
-    if name == '' or country == '' or age =='' or father_name == '' or mother_name == '' or passport_no == '' or room == '':
+    if name == '' or country == '' or age =='' or father_name == '' or mother_name == '' or passport_no == '' or room == '' or condition != 'Yes':
         m_box.showerror('Input Warning','Please fill all the information!!!')
    
     else:

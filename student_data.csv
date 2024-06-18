@@ -1,2 +1,4 @@
 Stud_Name,Stud_Age,Stud_Country,Father's_Name,Mothers's_Name,Stud_Gender,Stud_Passport,Degree,Stud_Major,Stud_DOB,Room_No,Counselor,Checked
 MD TOHIDUL ISLAM,25,Bangladesh,SAIDUL ISLAM,NAZMUN NAHAR,Male,B00833682,Master,Computer Science and Technology,"['1999', 'July', '29']",422,Ms. Joyce XU,Yes
+DIAM ULLAH,25,Bangladesh,MR A,MRS B,Male,A0004356,Master,IOT,"['1999', 'January', '1']",four two,Ms. Catherine YANG,No
+A,22,CHINA,MR Y,MRS Z,Male,CH865457,Bachelor,CST,"['1999', 'January', '1']",400,Ms. Lea LI,No
