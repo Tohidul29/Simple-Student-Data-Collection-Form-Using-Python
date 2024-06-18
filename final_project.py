@@ -35,7 +35,7 @@ heading1 = ttk.Label(part0, text='河海大学', font=('helvetica',25,'bold'))
 heading1.grid(row=1, column=1, padx=45, pady=10)
 heading1.configure(foreground='Blue')
 
-heading = ttk.Label(part0, text='Welcome to International College', font=('helvetica',20))
+heading = ttk.Label(part0, text='Welcome to the International College', font=('helvetica',20))
 heading.grid(row=2, column=1, padx=45, pady=10)
 heading.configure(foreground='Blue')
 
@@ -128,19 +128,25 @@ mother_var = tk.StringVar()
 mother_box = ttk.Entry(part2, width=50, textvariable=mother_var)
 mother_box.grid(row=1, column=1, padx=10, pady=5, sticky=tk.W)
 
+degree_var = tk.StringVar()
+degree_combobox = ttk.Combobox(part2, width=20, textvariable=degree_var, state='readonly')
+degree_combobox['values'] = ('Bachelor', 'Master', 'PhD', 'Non-Degree Program')
+degree_combobox.current(0)
+degree_combobox.grid(row=2, column=1, padx=10, pady=5, sticky=tk.W)
+
 major_var = tk.StringVar()
 major_box = ttk.Entry(part2, width=50, textvariable=major_var)
-major_box.grid(row=2, column=1, padx=10, pady=5, sticky=tk.W)
+major_box.grid(row=3, column=1, padx=10, pady=5, sticky=tk.W)
 
 room_var = tk.StringVar()
 room_box = ttk.Entry(part2, width=10, textvariable=room_var)
-room_box.grid(row=3, column=1, padx=10, pady=5, sticky=tk.W)
+room_box.grid(row=4, column=1, padx=10, pady=5, sticky=tk.W)
 
 counselor_var = tk.StringVar()
 counselor_combobox = ttk.Combobox(part2, width=20, textvariable=counselor_var, state='readonly')
 counselor_combobox['values'] = ('Ms. Catherine YANG', 'Ms. Joyce XU', 'Mr. David YING', 'Ms. Lea LI')
 counselor_combobox.current(0)
-counselor_combobox.grid(row=4, column=1, padx=10, pady=5, sticky=tk.W)
+counselor_combobox.grid(row=5, column=1, padx=10, pady=5, sticky=tk.W)
 
 
 #more info part(labelframe2):
@@ -150,14 +156,17 @@ father_label.grid(row=0, column=0, padx=10, pady=5, sticky=tk.W)
 mother_label = ttk.Label(part2, text='Mother\'s Name: ', font=('helvetica',14))
 mother_label.grid(row=1, column=0, padx=10, pady=5, sticky=tk.W)
 
+degree_label = ttk.Label(part2, text='Degree : ', font=('helvetica',14))
+degree_label.grid(row=2, column=0, padx=10, pady=5, sticky=tk.W)
+
 major_label = ttk.Label(part2, text='Study Major: ', font=('helvetica',14))
-major_label.grid(row=2, column=0, padx=10, pady=5, sticky=tk.W)
+major_label.grid(row=3, column=0, padx=10, pady=5, sticky=tk.W)
 
 roomnumber_label = ttk.Label(part2, text='Room Number: ', font=('helvetica',14))
-roomnumber_label.grid(row=3, column=0, padx=10, pady=5, sticky=tk.W)
+roomnumber_label.grid(row=4, column=0, padx=10, pady=5, sticky=tk.W)
 
 counselor_label = ttk.Label(part2,text='Counselor\'s Name: ', font=('helvetica',14))
-counselor_label.grid(row=4, column=0, padx=10, pady=5, sticky=tk.W)
+counselor_label.grid(row=5, column=0, padx=10, pady=5, sticky=tk.W)
 
 
 #checkbtn create:
@@ -175,6 +184,7 @@ def action():
     mother_name = mother_var.get()
     gender = gender_var.get()
     passport_no = passport_var.get()
+    degree = degree_var.get()
     major = major_var.get()
     B_Year = year_var.get()
     B_Month = month_var.get()
@@ -202,7 +212,7 @@ def action():
 
         #csv file create:
         with open ('student_data.csv','a',newline='') as f:
-            dict_writer = DictWriter(f, fieldnames=['Stud_Name','Stud_Age','Stud_Country','Father\'s_Name','Mothers\'s_Name','Stud_Gender','Stud_Passport','Stud_Major','Stud_DOB','Room_No','Counselor','Checked'])
+            dict_writer = DictWriter(f, fieldnames=['Stud_Name','Stud_Age','Stud_Country','Father\'s_Name','Mothers\'s_Name','Stud_Gender','Stud_Passport','Degree','Stud_Major','Stud_DOB','Room_No','Counselor','Checked'])
             if os.stat('student_data.csv').st_size == 0:
                 dict_writer.writeheader()
             dict_writer.writerow({
@@ -213,6 +223,7 @@ def action():
                 'Mothers\'s_Name' : mother_name,
                 'Stud_Gender' : gender,
                 'Stud_Passport' : passport_no,
+                'Degree' : degree,
                 'Stud_Major' : major,
                 'Stud_DOB' : [B_Year, B_Month, B_Day],
                 'Room_No' : room,
